@@ -6,7 +6,7 @@
 }
 
 body{
-    background-color:   #23272a ;
+    background-color:   #2D2D30;
 }
 
 
@@ -72,7 +72,7 @@ body{
 
 .btn{
     cursor: pointer;
-    background-color: aqua;
+    background-color: red;
     font-weight: bold;
     border: none;
     border-radius: .2rem;
