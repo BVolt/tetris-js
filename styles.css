@@ -1,0 +1,107 @@
+/* Global Styles */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color:   #23272a ;
+}
+
+
+/* Game Grid Styles */
+.game-grid{
+    position: absolute;
+    top: -40px;
+    left: 0;
+    right: 0;
+    display: grid;
+    width: 400px;
+    height: 800px;
+    margin: 0 auto;
+    background-image: url('./stars.jpg');
+    background-position: center;
+    background-size: cover;
+    grid-template-columns: repeat(10, 1fr);
+}
+
+.game-grid div{
+    height: 40px;
+    transition: .2s ease;
+}
+
+
+/* Different Color classes */
+.v1{
+    background-color: aqua;
+    border-color: aqua;
+    border-style: outset;
+
+}
+.v2{
+    background-color: red;
+    border-color: red;
+    border-style: outset;
+}
+.v3{
+    background-color: green;
+    border-color: green;
+    border-style: outset;
+}
+.v4{
+    background-color: purple;
+    border-color: purple;
+    border-style: outset;
+}
+.v5{
+    background-color: orange;
+    border-color: orange;
+    border-style: outset;
+}
+
+
+/* Game Controls and Score */
+.controls{
+    position: absolute;
+    top: 760px;
+    padding-top: 10px;
+    width: 100%;
+    text-align: center;
+}
+
+.btn{
+    cursor: pointer;
+    background-color: aqua;
+    font-weight: bold;
+    border: none;
+    border-radius: .2rem;
+    padding: 10px;
+}
+
+.start:hover{
+    background-color: white;
+    border-radius: .2rem;
+    padding: 10px;
+}
+
+.score-box{
+    width: 100%;
+    color:white;
+}
+
+
+/* Game over styles */
+.game-over{
+    display: flex;
+    color: white;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    align-items: center;
+    justify-content: center;
+}
+
+
