@@ -24,11 +24,13 @@ body{
     background-position: center;
     background-size: cover;
     grid-template-columns: repeat(10, 1fr);
+    outline: 5px solid black;
+    outline-offset: 120px;
 }
 
 .game-grid div{
     height: 40px;
-    transition: .2s ease;
+    /* transition: .2s ease; */
 }
 
 
@@ -93,8 +95,11 @@ body{
 
 /* Game over styles */
 .game-over{
+    font-size: 3.5em;
+    font-weight: bold;
     display: flex;
-    color: white;
+    color: red;
+    -webkit-text-stroke: 3px black;
     position: absolute;
     top: 0;
     bottom: 0;

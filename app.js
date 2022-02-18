@@ -111,27 +111,27 @@ const checkCoordinates = (origin, tet) =>{
 //Game Control Functions
 //============================================================================================
 const begin = ()=>{
-    document.addEventListener('keyup', control)
+    document.addEventListener('keyup', controls)
     draw()
-    gameTic = setInterval(() =>moveDown( '1' ), 1000)
+    gameTic = setInterval(() =>move( 'down' ), 1000)
     start.removeEventListener('click', begin)
 }
 
 const endGame = () => {
     clearInterval(gameTic)
-    document.removeEventListener('keyup', control)
+    document.removeEventListener('keyup', controls)
     document.body.innerHTML+='<h1 class="game-over">GAME OVER!</h1>'
 }
 
 const pause = () =>{
     clearInterval(gameTic)
-    document.removeEventListener('keyup', control)
+    document.removeEventListener('keyup', controls)
     resumebtn.addEventListener('click', resume)
 }
 
 const resume = () =>{
-    gameTic = setInterval(() =>moveDown( '1' ), 1000)
-    document.addEventListener('keyup', control)
+    gameTic = setInterval(() =>move( 'down' ), 1000)
+    document.addEventListener('keyup', controls)
     resumebtn.removeEventListener('click', resume)
 }
 //============================================================================================
@@ -216,59 +216,37 @@ const checkRows = () =>{
 //============================================================================================
 //Shape Movement Functions
 //============================================================================================
-const moveDown = () => {
-    undraw()
-    let y = origin[0] 
-    let x = origin[1]
-    y++
-    const check = checkCoordinates([y,x], tet)
-    if(!check){
-            draw()
-            origin = [0,4]
-            checkRows()
-            randomIndex = Math.floor(Math.random()*tetOptions.length)
-            tets = tetOptions[randomIndex]
-            tet = tets[rotation]
-            randomColor = Math.floor(Math.random()*colors.length)
-            colorCode = colors[randomColor]
-            return
-        }
-        else {
-        origin=[y, x]
-        draw()
-    }
-}
-
-const moveLeft = () => {
+const move = (direc) => {
     undraw()
     let y= origin[0] 
     let x = origin[1]
-    x--
+    if(direc === 'left'){
+        x--
+    }
+    if(direc === 'right'){
+        x++
+    }
+    if(direc === 'down'){
+        y++
+    }
     const check = checkCoordinates([y,x], tet)
     if(!check){
             draw()
+            if(direc === 'down'){
+                origin = [0,4]
+                checkRows()
+                randomIndex = Math.floor(Math.random()*tetOptions.length)
+                tets = tetOptions[randomIndex]
+                tet = tets[rotation]
+                randomColor = Math.floor(Math.random()*colors.length)
+                colorCode = colors[randomColor]
+            }
             return
         }
         else {
             origin=[y, x]
             draw()
         }
-}
-    
-const moveRight = () => {
-    undraw()
-    let y = origin[0] 
-    let x = origin[1]
-    x++
-    const check = checkCoordinates([y,x], tet)
-    if(!check){
-            draw()
-            return
-    }
-    else {
-        origin=[y, x]
-        draw()
-    }
 }
 
 const rotate = () =>{
@@ -289,19 +267,26 @@ const rotate = () =>{
         draw()
     }
 }
-function control(e) {
-    if(e.keyCode === 37) {
-        moveLeft()
+
+const controls = event => {
+    switch(event.keyCode) {
+    case 37:{
+        move('left')
+        break
     } 
-    else if (e.keyCode === 38) {
+    case 38: {
       rotate()
+      break
     } 
-    else if (e.keyCode === 39) {
-        moveRight()
+    case 39: {
+        move('right')
+        break
     } 
-    else if (e.keyCode === 40) {
-        moveDown()
+    case 40: {
+        move('down')
+        break
     }
+}
 }
 //============================================================================================
 
