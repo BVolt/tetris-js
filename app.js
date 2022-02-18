@@ -53,17 +53,6 @@ const create = () => {
     }
     
 }
-
-const addDisplacement= (origin, disp) => {
-    let y0 = origin[0]
-    let x0 = origin[1]
-    let y1 = disp[0]
-    let x1 = disp[1]
-    let newY = y0 + y1
-    let newX = x0 + x1
-
-    return [newY,newX]
-} 
 //============================================================================================
 
 
@@ -84,6 +73,17 @@ const undraw = () =>{
     gridBlocks[origin[0] +tet[2][0]][origin[1]+tet[2][1]].classList.remove(`v${colorCode}`)
     gridBlocks[origin[0] +tet[3][0]][origin[1]+tet[3][1]].classList.remove(`v${colorCode}`)
 }
+
+const addDisplacement= (origin, disp) => {
+    let y0 = origin[0]
+    let x0 = origin[1]
+    let y1 = disp[0]
+    let x1 = disp[1]
+    let newY = y0 + y1
+    let newX = x0 + x1
+
+    return [newY,newX]
+} 
 
 const checkCoordinates = (origin, tet) =>{
     let clear = true
